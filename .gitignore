@@ -1,0 +1,10 @@
+# created by virtualenv automatically
+.idea
+*.log
+*.pot
+*.pyc
+/db.sqlite3
+/venv
+/Lib
+/Scripts
+pyvenv.cfg
