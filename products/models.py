@@ -9,5 +9,8 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
+    def get_display_price(self):
+        return f'{self.price:.2f}'
+
     class Meta:
         ordering = ['id']
