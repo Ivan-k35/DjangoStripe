@@ -1,7 +1,7 @@
 import stripe
 from django.conf import settings
 from django.views.generic import TemplateView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views import View
 from .models import Item
 
@@ -23,7 +23,7 @@ class ItemView(TemplateView):
 
     def get_context_data(self, **kwargs):
         pk = self.kwargs.get('pk')
-        product = Item.objects.get(pk=pk)
+        product = get_object_or_404(Item, pk=pk)
         context = super(ItemView, self).get_context_data(**kwargs)
         context.update({'product': product})
         return context
@@ -32,7 +32,7 @@ class ItemView(TemplateView):
 class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         product_id = self.kwargs['pk']
-        product = Item.objects.get(pk=product_id)
+        product = get_object_or_404(Item, pk=product_id)
         YOUR_DOMAIN = 'http://127.0.0.1:8000/'
         checkout_session = stripe.checkout.Session.create(
             line_items=[{
