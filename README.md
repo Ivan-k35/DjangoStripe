@@ -16,7 +16,7 @@ _______
 git clone https://github.com/Ivan-k35/DjangoStripe.git
 python -m venv venv
 .\venv\Scripts\activate
-pip intall -r requirements.txt
+pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
